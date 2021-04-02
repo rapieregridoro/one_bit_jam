@@ -1,16 +1,21 @@
 extends Node
 
+#inputs
+var wished_direction := Vector2.ZERO
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	
+	pass 
+
+func _process(delta):
+	
+	wished_direction_inputs()
+	
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func wished_direction_inputs():
+	#pega os inputs do jogador
+	wished_direction.x = (int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")))
+	wished_direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
+	
