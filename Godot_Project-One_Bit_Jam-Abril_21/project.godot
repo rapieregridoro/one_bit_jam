@@ -18,6 +18,14 @@ _global_script_class_icons={
 config/name="Godot_Project-One_Bit_Jam-Abril_21"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scenes/Global.tscn"
+
+[display]
+
+window/stretch/mode="2d"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

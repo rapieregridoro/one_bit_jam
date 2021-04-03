@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Jogador.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Fase.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Camera_body.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.0
+
+[node name="Fase" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Chao" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Chao"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.5
+margin_top = -189.5
+margin_right = 53.5
+margin_bottom = 189.5
+color = Color( 0.25098, 0.25098, 0.25098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chao/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_right = -6.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Chao/ColorRect/VBoxContainer"]
+margin_right = 95.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Chao/ColorRect/VBoxContainer"]
+margin_top = 63.0
+margin_right = 95.0
+margin_bottom = 123.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Chao/ColorRect/VBoxContainer"]
+margin_top = 127.0
+margin_right = 95.0
+margin_bottom = 187.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Chao/ColorRect/VBoxContainer"]
+margin_top = 191.0
+margin_right = 95.0
+margin_bottom = 251.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Chao/ColorRect/VBoxContainer"]
+margin_top = 255.0
+margin_right = 95.0
+margin_bottom = 315.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="Chao/ColorRect/VBoxContainer"]
+margin_top = 319.0
+margin_right = 95.0
+margin_bottom = 379.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="Jogador" type="KinematicBody2D" parent="."]
+script = ExtResource( 1 )
+vel_coef = 0.6
+
+[node name="ColorRect" type="ColorRect" parent="Jogador"]
+margin_left = -5.0
+margin_top = -3.0
+margin_right = 5.0
+margin_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 5, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="Jogador"]
+rotating = true
+current = true
+zoom = Vector2( 0.2, 0.2 )
+limit_left = -105
+limit_top = -190
+limit_right = 105
+limit_bottom = 189
+limit_smoothed = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Camera_body" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_body"]
+shape = SubResource( 1 )
