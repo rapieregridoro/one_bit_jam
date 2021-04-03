@@ -24,3 +24,7 @@ func wished_direction_inputs():
 	if interacting:
 		emit_signal("interacting_signal")
 	
+
+func on_button_pressed_by_mouse():
+	
+	print("apertado")
