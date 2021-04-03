@@ -4,6 +4,7 @@ extends Node
 var wished_direction := Vector2.ZERO
 var interacting := false
 signal interacting_signal
+signal aperte
 
 func _ready():
 	
@@ -27,4 +28,5 @@ func wished_direction_inputs():
 
 func on_button_pressed_by_mouse():
 	
-	print("apertado")
+	emit_signal("aperte")
+	
