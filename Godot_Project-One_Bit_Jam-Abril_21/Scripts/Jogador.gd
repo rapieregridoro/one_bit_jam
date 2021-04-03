@@ -39,10 +39,13 @@ func mover_livre():
 func animacao():
 	
 	$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
-	$AnimatedSprite.playing = !dashing
+	if Global.wished_direction == Vector2.ZERO:
+		$AnimatedSprite.animation = "idle"
+	else:
+		$AnimatedSprite.animation = "walk"
 	
 	if dashing:
-		$AnimatedSprite.frame = 1
+		$AnimatedSprite.animation = "dash"
 		if !$AnimatedSprite/AnimationPlayer.is_playing():
 			match $AnimatedSprite.scale.x:
 				1.0:
