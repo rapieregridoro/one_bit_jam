@@ -87,6 +87,12 @@ color = Color( 0.403922, 0.403922, 0.403922, 1 )
 
 [node name="Camera_body" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
+alvo = NodePath("../Jogador")
+vel_camera = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_body"]
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Camera_body"]
+current = true
+zoom = Vector2( 0.2, 0.2 )

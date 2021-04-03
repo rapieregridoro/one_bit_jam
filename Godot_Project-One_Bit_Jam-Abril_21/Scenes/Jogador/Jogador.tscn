@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Images/Carinha_walk.png" type="Texture" id=2]
@@ -28,7 +28,7 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=6]
-resource_name = "Dash"
+resource_name = "Dash_dir"
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -38,6 +38,20 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Dash_esq"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -360, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
 }
 
@@ -58,24 +72,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-rotating = true
-current = true
-zoom = Vector2( 0.2, 0.2 )
-limit_left = -105
-limit_top = -190
-limit_right = 105
-limit_bottom = 189
-limit_smoothed = true
-smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-rotation = 6.28319
 frames = SubResource( 5 )
 frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
-anims/Dash = SubResource( 6 )
+anims/Dash_dir = SubResource( 6 )
+anims/Dash_esq = SubResource( 7 )

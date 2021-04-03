@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
-export(String) var alvo
+export(NodePath) var alvo
+export(float) var vel_camera
 
 func _ready():
-	pass # Replace with function body.
+	
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	move_and_slide((get_node(alvo).global_position - global_position) * vel_camera, Vector2.ZERO)
+	pass
