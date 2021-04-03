@@ -15,14 +15,18 @@ func _physics_process(delta):
 	
 	mover_livre()
 	animacao()
+	
+	$Collision_Dash.rotation = vel_dash_temp.angle()
+	
+	
+
 
 func interaction_emmited():
+	#chamado quando sinal de interação é emitido
 	if Global.wished_direction != Vector2.ZERO and !dashing:
 		dashing = true
-		$ColorRect.color = Color(0.8,0.5,0.5,1)
 		yield(get_tree().create_timer(0.5), "timeout")
 		dashing = false
-		$ColorRect.color = Color(1,1,1,1)
 		yield(get_tree().create_timer(0.2), "timeout")
 		
 	
