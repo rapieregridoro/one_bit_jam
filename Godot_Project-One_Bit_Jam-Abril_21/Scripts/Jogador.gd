@@ -14,7 +14,7 @@ func _ready():
 func _physics_process(delta):
 	
 	mover_livre()
-	
+	animacao()
 
 func interaction_emmited():
 	if Global.wished_direction != Vector2.ZERO and !dashing:
@@ -35,4 +35,21 @@ func mover_livre():
 	
 	move_and_slide(vel * Global.wished_direction * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing),Vector2.ZERO)
 	
-	pass
+
+func animacao():
+	
+	$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
+	$AnimatedSprite.playing = !dashing
+	
+	if dashing:
+		$AnimatedSprite.frame = 1
+		if !$AnimatedSprite/AnimationPlayer.is_playing():
+			match $AnimatedSprite.scale.x:
+				1.0:
+					$AnimatedSprite/AnimationPlayer.play("Dash_dir")
+				-1.0:
+					$AnimatedSprite/AnimationPlayer.play("Dash_esq")
+				
+			
+		
+	

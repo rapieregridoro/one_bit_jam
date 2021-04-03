@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Jogador.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Jogador/Jogador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Fase.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Camera_body.gd" type="Script" id=3]
 
@@ -83,37 +83,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.403922, 0.403922, 0.403922, 1 )
 
-[node name="Jogador" type="KinematicBody2D" parent="."]
-script = ExtResource( 1 )
-vel_coef = 0.6
-
-[node name="ColorRect" type="ColorRect" parent="Jogador"]
-margin_left = -5.0
-margin_top = -3.0
-margin_right = 5.0
-margin_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 5, 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Camera2D" type="Camera2D" parent="Jogador"]
-rotating = true
-current = true
-zoom = Vector2( 0.2, 0.2 )
-limit_left = -105
-limit_top = -190
-limit_right = 105
-limit_bottom = 189
-limit_smoothed = true
-smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
+[node name="Jogador" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera_body" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
+alvo = NodePath("../Jogador")
+vel_camera = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_body"]
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Camera_body"]
+current = true
+zoom = Vector2( 0.2, 0.2 )
