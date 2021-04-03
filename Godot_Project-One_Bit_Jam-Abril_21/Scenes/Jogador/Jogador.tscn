@@ -1,34 +1,65 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Images/Carinha_walk.png" type="Texture" id=2]
+[ext_resource path="res://Images/Carinha_idle.png" type="Texture" id=3]
+[ext_resource path="res://Images/Carinha_dash.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 12, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 24, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 36, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 12, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 12, 8 )
+
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
 region = Rect2( 36, 0, 12, 8 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 12, 8 )
+
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "default",
+"name": "idle",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "dash",
+"speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=6]
-resource_name = "Dash_dir"
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -41,8 +72,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Dash_esq"
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -73,10 +103,10 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 5 )
-frame = 2
+frames = SubResource( 10 )
+animation = "dash"
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
-anims/Dash_dir = SubResource( 6 )
-anims/Dash_esq = SubResource( 7 )
+anims/Dash_dir = SubResource( 11 )
+anims/Dash_esq = SubResource( 12 )

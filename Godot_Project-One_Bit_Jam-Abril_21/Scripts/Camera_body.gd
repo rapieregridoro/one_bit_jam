@@ -4,7 +4,6 @@ export(NodePath) var alvo
 export(float) var vel_camera
 
 func _ready():
-	#alvo = "/root/Fase/Jogador"
 	pass
 
 

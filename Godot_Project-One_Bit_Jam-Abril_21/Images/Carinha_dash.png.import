@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/botao.png-5e118e2b27efec7df2e4fbb3c806d6a3.stex"
+path="res://.import/Carinha_dash.png-24a0d75aac675314bee6249bc3c51f0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/botao.png"
-dest_files=[ "res://.import/botao.png-5e118e2b27efec7df2e4fbb3c806d6a3.stex" ]
+source_file="res://Images/Carinha_dash.png"
+dest_files=[ "res://.import/Carinha_dash.png-24a0d75aac675314bee6249bc3c51f0f.stex" ]
 
 [params]
 
