@@ -88,6 +88,7 @@ ptb_down={
 2d_physics/layer_2="Jogador"
 2d_physics/layer_3="Jogador_Dash"
 2d_physics/layer_4="Dash_Damage"
+2d_physics/layer_5="Spawns"
 
 [rendering]
 

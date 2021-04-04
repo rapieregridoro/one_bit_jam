@@ -39,7 +39,7 @@ func vitoria():
 	if !vitoria_playied:
 		$Win_Altar/AnimationPlayer.play("Victory")
 		vitoria_playied = true
-	
+	$Limite_Cam/StaticBody2D.set_collision_layer_bit(0, false)
 	$Camera_body.vel_camera = 2
 	$Camera_body.alvo = $Win_Camera_Pos.get_path()
 	
@@ -51,6 +51,7 @@ func vitoria():
 func resetando_global():
 	vitoria = false
 	vitoria_playied = false
+	$Limite_Cam/StaticBody2D.set_collision_layer_bit(0,true)
 	
 
 func on_button_pressed_by_mouse():

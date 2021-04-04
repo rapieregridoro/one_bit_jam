@@ -11,6 +11,7 @@ func _ready():
 	set_camera_on_Jogador()
 	connect("button_pressed_by_mouse",Global,"on_button_pressed_by_mouse")
 	
+	
 	#para resetar as coisas por aqui
 	Global.connect("reseta_tudo", self, "reseta_fase")
 	
@@ -23,7 +24,8 @@ func _process(delta):
 
 func set_camera_on_Jogador():
 	Global.get_node("Camera_body").alvo = $YSort/Jogador.get_path()
-	
+	yield(get_tree().create_timer(0.5), "timeout")
+	Global.get_node("Camera_body").vel_camera = 10
 
 func reseta_fase():
 	

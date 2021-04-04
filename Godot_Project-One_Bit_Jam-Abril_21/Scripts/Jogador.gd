@@ -83,7 +83,6 @@ func _on_Collision_Dash_body_entered(body):
 	how_many_dash_col += 1
 	dash_collinding = true
 	
-	
 
 
 func _on_Collision_Dash_body_exited(body):
