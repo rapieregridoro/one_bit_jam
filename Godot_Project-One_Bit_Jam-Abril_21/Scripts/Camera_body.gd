@@ -5,7 +5,7 @@ export(float) var vel_camera
 
 
 func _ready():
-	
+	alvo = self.get_path()
 	pass
 
 func _process(delta):
