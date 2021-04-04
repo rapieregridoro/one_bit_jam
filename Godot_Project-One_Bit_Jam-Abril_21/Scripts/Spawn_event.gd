@@ -8,9 +8,8 @@ func _ready():
 	randomize()
 	Pick_Event()
 
-func _process(delta):
-	
-	pass
+#func _process(delta):
+#	pass
 
 func Pick_Event():
 	var random_number
@@ -27,6 +26,6 @@ func Spawn_Event():
 	
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	Spawn_Event()
 	
