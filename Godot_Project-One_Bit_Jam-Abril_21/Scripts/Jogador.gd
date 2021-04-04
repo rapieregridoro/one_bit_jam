@@ -71,6 +71,11 @@ func animacao():
 				
 			
 		
+	if tombando:
+		$AnimatedSprite.animation = "knock_back"
+		$AnimatedSprite/AnimationPlayer.stop()
+		$AnimatedSprite.rotation = 0
+	
 	
 
 
