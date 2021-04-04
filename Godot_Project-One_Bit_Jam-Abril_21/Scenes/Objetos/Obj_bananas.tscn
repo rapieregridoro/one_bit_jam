@@ -64,6 +64,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite/Area2D/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 5.3113
@@ -79,7 +91,6 @@ script = ExtResource( 2 )
 visible = false
 texture = ExtResource( 3 )
 hframes = 6
-frame = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -200 )
@@ -88,6 +99,8 @@ hframes = 2
 
 [node name="Area2D" type="Area2D" parent="Sprite"]
 position = Vector2( 0, 1.75 )
+collision_layer = 0
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
 shape = SubResource( 1 )
@@ -96,5 +109,7 @@ shape = SubResource( 1 )
 anims/Cai_a_banana = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -3.70102 )
 shape = SubResource( 3 )
+[connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]

@@ -7,7 +7,12 @@ signal interacting_signal
 signal aperte
 signal botao_apertado
 
-var on_menu = false
+var on_menu = true setget set_on_menu
+func set_on_menu(menu):
+	on_menu = menu
+	if on_menu:
+		$Camera_body.alvo = $Menu_Pos.get_path()
+	
 
 var vitoria := false
 var vitoria_playied := false
@@ -17,7 +22,7 @@ signal morreu(como)
 
 func _ready():
 	connect("reseta_tudo", self, "resetando_global")
-	pass 
+	
 
 func _process(delta):
 	
@@ -61,6 +66,9 @@ func resetando_global():
 func on_button_pressed_by_mouse():
 	if on_menu:
 		emit_signal("aperte")
+		yield(get_tree().create_timer(1.0), "timeout")
+		emit_signal("reseta_tudo")
+		on_menu = false
 	
 
 func on_botao_apertado():

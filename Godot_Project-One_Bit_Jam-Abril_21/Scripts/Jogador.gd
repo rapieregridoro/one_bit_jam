@@ -10,6 +10,7 @@ var how_many_dash_col = 0
 export(bool) var tombando = false
 export(float) var coef_tombando
 
+var morto := false
 
 
 func _ready():
@@ -40,14 +41,15 @@ func interaction_emmited():
 func mover_livre():
 	
 	if not dashing:
-		vel_dash_temp = Global.wished_direction * vel_dash
+		vel_dash_temp = Global.wished_direction.normalized() * vel_dash
 		
 	
 	if dashing and dash_collinding:
 		tombou()
 		
 	
-	move_and_slide(vel * Global.wished_direction * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing) * (1 - coef_tombando * int(tombando) ),Vector2.ZERO)
+	if !morto:
+		move_and_slide(vel * Global.wished_direction.normalized() * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing) * (1 - coef_tombando * int(tombando) ),Vector2.ZERO)
 	
 
 func tombou():
@@ -55,7 +57,11 @@ func tombou():
 	
 
 func Morte(como):
-	print(como)
+	match como:
+		"banana":
+			print("morreu pra banana")
+			pass
+		
 	
 
 func animacao():
