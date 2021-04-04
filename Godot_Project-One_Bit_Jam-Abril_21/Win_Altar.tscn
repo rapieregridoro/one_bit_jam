@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Images/altar.png" type="Texture" id=1]
+[ext_resource path="res://Images/altar_baixo.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Victory"
@@ -19,10 +20,13 @@ tracks/0/keys = {
 
 [node name="Win_Altar" type="Node2D"]
 
+[node name="base" type="Sprite" parent="."]
+position = Vector2( 0, 13.5 )
+texture = ExtResource( 2 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 28
-frame = 27
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Victory = SubResource( 1 )
