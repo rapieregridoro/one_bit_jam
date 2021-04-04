@@ -20,8 +20,9 @@ func _ready():
 
 func _physics_process(delta):
 	
-	mover_livre()
-	animacao()
+	if !Global.on_menu:
+		mover_livre()
+		animacao()
 	
 	$Collision_Dash.rotation = vel_dash_temp.angle()
 	

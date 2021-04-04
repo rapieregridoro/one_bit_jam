@@ -39,7 +39,7 @@ func wished_direction_inputs():
 	#pega os inputs do jogador
 	wished_direction.x = (int(Input.is_action_pressed("ptb_right")) - int(Input.is_action_pressed("ptb_left")))
 	wished_direction.y = (int(Input.is_action_pressed("ptb_down")) - int(Input.is_action_pressed("ptb_up")))
-	interacting = Input.is_action_just_pressed("ui_select")
+	interacting = Input.is_action_just_pressed("Dash")
 	if interacting:
 		emit_signal("interacting_signal")
 	
@@ -68,7 +68,7 @@ func on_button_pressed_by_mouse():
 	if on_menu:
 		emit_signal("aperte")
 		yield(get_tree().create_timer(1.0), "timeout")
-		$Controles.hide()
+		$Menu.hide()
 		$Camera_body/Camera2D/AnimationCamera.play("Zoom_in")
 		emit_signal("reseta_tudo")
 		on_menu = false
