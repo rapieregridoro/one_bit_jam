@@ -10,8 +10,10 @@ var how_many_dash_col = 0
 export(bool) var tombando = false
 export(float) var coef_tombando
 
+
+
 func _ready():
-	
+	Global.connect("morreu", self, "Morte")
 	Global.connect("interacting_signal",self,"interaction_emmited")
 	
 
@@ -52,9 +54,9 @@ func tombou():
 	$AnimationPlayer.play("tombando")
 	
 
-func Morte():
+func Morte(como):
+	print(como)
 	
-	pass
 
 func animacao():
 	
