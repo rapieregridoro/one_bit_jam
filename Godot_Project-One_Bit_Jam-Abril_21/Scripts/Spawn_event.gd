@@ -1,4 +1,4 @@
-extends Node2D
+extends YSort
 
 export(Array, PackedScene) var Eventos
 var event_number
