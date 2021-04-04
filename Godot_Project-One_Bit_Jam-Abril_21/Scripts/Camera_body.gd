@@ -3,9 +3,10 @@ extends KinematicBody2D
 export(NodePath) var alvo
 export(float) var vel_camera
 
-func _ready():
-	pass
 
+func _ready():
+	alvo = self.get_path()
+	pass
 
 func _process(delta):
 	if alvo != null:
