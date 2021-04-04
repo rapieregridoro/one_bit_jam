@@ -15,3 +15,8 @@ func _process(_delta):
 		$AnimationPlayer.play("Cai_a_banana")
 		ja_caiu = true
 	
+
+
+func _on_Area2D_body_entered(body):
+	Global.emit_signal("morreu","banana")
+	
