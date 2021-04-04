@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Scripts/Evento_Bananas.gd" type="Script" id=1]
 
-[node name="Bananas" type="Node2D"]
+[node name="Bananas" type="YSort"]
 script = ExtResource( 1 )

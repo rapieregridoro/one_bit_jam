@@ -51,6 +51,7 @@ func vitoria():
 func resetando_global():
 	vitoria = false
 	vitoria_playied = false
+	$Win_Altar/Sprite.frame = 0
 	$Limite_Cam/StaticBody2D.set_collision_layer_bit(0,true)
 	
 
