@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Fase/Chao.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Camera_body.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Objetos/Win_Altar.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.0
+
+[node name="Global" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Win_Camera_Pos" type="Position2D" parent="."]
+position = Vector2( 0, -188.874 )
+
+[node name="Win_Altar" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -212.656 )
+
+[node name="Chao" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera_body" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
+alvo = NodePath("../Jogador")
+vel_camera = 8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera_body"]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Camera_body"]
+current = true
+zoom = Vector2( 0.2, 0.2 )
+
+[editable path="Win_Altar"]
