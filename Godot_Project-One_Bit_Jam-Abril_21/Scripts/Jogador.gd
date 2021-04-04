@@ -52,6 +52,10 @@ func tombou():
 	$AnimationPlayer.play("tombando")
 	
 
+func Morte():
+	
+	pass
+
 func animacao():
 	
 	$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
