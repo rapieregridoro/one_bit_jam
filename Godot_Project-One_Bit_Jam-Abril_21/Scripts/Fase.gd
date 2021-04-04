@@ -31,6 +31,7 @@ func reseta_fase():
 	
 	set_camera_on_Jogador()
 	get_tree().change_scene("res://Scenes/Fase/Fase.tscn")
+	Global.get_node("Win_Altar/Sprite").frame = 0
 	
 	pass
 

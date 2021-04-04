@@ -12,10 +12,10 @@ export(float) var coef_tombando
 
 var morto := false
 
-
 func _ready():
 	Global.connect("morreu", self, "Morte")
 	Global.connect("interacting_signal",self,"interaction_emmited")
+	set_collision_layer_bit(6, true)
 	
 
 func _physics_process(delta):
@@ -57,38 +57,43 @@ func tombou():
 	
 
 func Morte(como):
+	morto = true
 	match como:
 		"banana":
-			print("morreu pra banana")
+			$AnimationPlayer.play("escorregando")
 			
 		"fogo":
-			print("morreu queimado")
+			$AnimationPlayer.play("tostando")
 			
-	
+		
+	yield(get_tree().create_timer(1.0), "timeout")
+	Global.emit_signal("reseta_tudo")
 
 func animacao():
 	
-	$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
-	if Global.wished_direction == Vector2.ZERO:
-		$AnimatedSprite.animation = "idle"
-	else:
-		$AnimatedSprite.animation = "walk"
-	
-	if dashing:
-		$AnimatedSprite.animation = "dash"
-		if !$AnimatedSprite/AnimationPlayer.is_playing():
-			match $AnimatedSprite.scale.x:
-				1.0:
-					$AnimatedSprite/AnimationPlayer.play("Dash_dir")
-				-1.0:
-					$AnimatedSprite/AnimationPlayer.play("Dash_esq")
+	if !morto:
+		$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
+		if Global.wished_direction == Vector2.ZERO:
+			$AnimatedSprite.animation = "idle"
+		else:
+			$AnimatedSprite.animation = "walk"
+		
+		if dashing:
+			$AnimatedSprite.animation = "dash"
+			if !$AnimatedSprite/AnimationPlayer.is_playing():
+				match $AnimatedSprite.scale.x:
+					1.0:
+						$AnimatedSprite/AnimationPlayer.play("Dash_dir")
+					-1.0:
+						$AnimatedSprite/AnimationPlayer.play("Dash_esq")
+					
 				
 			
+		if tombando:
+			$AnimatedSprite.animation = "knock_back"
+			$AnimatedSprite/AnimationPlayer.stop()
+			$AnimatedSprite.rotation = 0
 		
-	if tombando:
-		$AnimatedSprite.animation = "knock_back"
-		$AnimatedSprite/AnimationPlayer.stop()
-		$AnimatedSprite.rotation = 0
 	
 	
 
