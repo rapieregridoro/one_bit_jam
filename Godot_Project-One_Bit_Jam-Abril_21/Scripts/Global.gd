@@ -13,6 +13,7 @@ func set_on_menu(menu):
 	if on_menu:
 		$Camera_body.alvo = $Menu_Pos.get_path()
 	
+	
 
 var vitoria := false
 var vitoria_playied := false
@@ -67,6 +68,8 @@ func on_button_pressed_by_mouse():
 	if on_menu:
 		emit_signal("aperte")
 		yield(get_tree().create_timer(1.0), "timeout")
+		$Controles.hide()
+		$Camera_body/Camera2D/AnimationCamera.play("Zoom_in")
 		emit_signal("reseta_tudo")
 		on_menu = false
 	
