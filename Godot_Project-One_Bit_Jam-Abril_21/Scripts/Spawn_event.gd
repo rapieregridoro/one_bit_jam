@@ -2,6 +2,7 @@ extends Node2D
 
 export(Array, PackedScene) var Eventos
 var event_number
+var spawned = false
 
 func _ready():
 	randomize()
@@ -18,8 +19,10 @@ func Pick_Event():
 
 func Spawn_Event():
 	
-	var evento = Eventos[event_number].instance()
-	add_child(evento)
+	if !spawned:
+		var evento = Eventos[event_number].instance()
+		add_child(evento)
+		spawned = true
 	
 	
 
