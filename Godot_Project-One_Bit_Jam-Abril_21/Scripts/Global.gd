@@ -5,6 +5,8 @@ var wished_direction := Vector2.ZERO
 var interacting := false
 signal interacting_signal
 signal aperte
+signal botao_apertado
+var vitoria := false
 
 func _ready():
 	
@@ -30,3 +32,7 @@ func on_button_pressed_by_mouse():
 	
 	emit_signal("aperte")
 	
+
+func on_botao_apertado():
+	
+	pass
