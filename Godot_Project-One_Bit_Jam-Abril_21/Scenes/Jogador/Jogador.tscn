@@ -1,13 +1,47 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Images/Carinha_walk.png" type="Texture" id=2]
 [ext_resource path="res://Images/Carinha_idle.png" type="Texture" id=3]
 [ext_resource path="res://Images/Carinha_dash.png" type="Texture" id=4]
 [ext_resource path="res://Images/Carinha_knockback.png" type="Texture" id=5]
+[ext_resource path="res://Images/Carinha_tostado.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
-resource_name = "tombando"
+resource_name = "escorregando"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.142633, -64.9771, 0.142633, 64.9771, -180, -0.0932631, -21.2732, 0.0932631, 21.2732 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -4, -0.25, 0, 0.25, 0, -15, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5 )
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:tombando")
@@ -46,70 +80,127 @@ tracks/2/keys = {
 "values": [ 18, 82 ]
 }
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 14, 10 )
+[sub_resource type="Animation" id=21]
+resource_name = "tostando"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimatedSprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.346394, -0.0786203, 0.346394, 0.0786203, -1, -0.0558008, -0.488052, 0.0558008, 0.488052 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("AnimatedSprite:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -4, -0.338243, 0.15129, 0.338243, -0.15129, 4, -0.118967, -0.326072, 0.118967, 0.326072 ),
+"times": PoolRealArray( 0, 0.5 )
+}
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 14, 0, 14, 10 )
+region = Rect2( 0, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 28, 0, 14, 10 )
+region = Rect2( 14, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 42, 0, 14, 10 )
+region = Rect2( 28, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 14, 10 )
+atlas = ExtResource( 3 )
+region = Rect2( 42, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 14, 0, 14, 10 )
+region = Rect2( 0, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 28, 0, 14, 10 )
+region = Rect2( 14, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
-region = Rect2( 42, 0, 14, 10 )
+region = Rect2( 28, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 42, 0, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 14, 10 )
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 12, 9 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 6 )
+region = Rect2( 12, 0, 12, 9 )
+
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 7 ) ],
 "loop": true,
 "name": "knock_back",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "walk",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 12 ) ],
 "loop": true,
 "name": "dash",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ) ],
+"loop": false,
+"name": "tostado",
+"speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -134,7 +225,7 @@ tracks/1/keys = {
 "values": [ 18, 82 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=16]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -159,16 +250,16 @@ tracks/1/keys = {
 "values": [ 18, 82 ]
 }
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=17]
 radius = 4.0
 
-[sub_resource type="RayShape2D" id=16]
+[sub_resource type="RayShape2D" id=18]
 length = 6.0
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=19]
 radius = 3.0
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=20]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D:disabled")
@@ -184,28 +275,31 @@ tracks/0/keys = {
 }
 
 [node name="Jogador" type="KinematicBody2D"]
-collision_layer = 82
+collision_layer = 18
 collision_mask = 82
 script = ExtResource( 1 )
 vel_coef = 0.6
 coef_tombando = 1.7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/tombando = SubResource( 1 )
+anims/escorregando = SubResource( 1 )
+anims/tombando = SubResource( 2 )
+anims/tostando = SubResource( 21 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -4 )
-frames = SubResource( 12 )
-animation = "knock_back"
+frames = SubResource( 14 )
+animation = "tostado"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
-anims/Dash_dir = SubResource( 13 )
-anims/Dash_esq = SubResource( 14 )
+anims/Dash_dir = SubResource( 15 )
+anims/Dash_esq = SubResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -3 )
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="Collision_Dash" type="Area2D" parent="."]
 position = Vector2( 0, -3 )
@@ -214,7 +308,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Dash"]
 rotation = -1.5708
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="Dash_Damage" type="Area2D" parent="Collision_Dash"]
 position = Vector2( 6, 0 )
@@ -222,10 +316,10 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Dash/Dash_Damage"]
-shape = SubResource( 17 )
+shape = SubResource( 19 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Collision_Dash/Dash_Damage"]
-anims/Damage = SubResource( 18 )
+anims/Damage = SubResource( 20 )
 [connection signal="body_entered" from="Collision_Dash" to="." method="_on_Collision_Dash_body_entered"]
 [connection signal="body_exited" from="Collision_Dash" to="." method="_on_Collision_Dash_body_exited"]

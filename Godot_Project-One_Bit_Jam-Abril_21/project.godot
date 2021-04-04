@@ -90,7 +90,6 @@ ptb_down={
 2d_physics/layer_4="Dash_Damage"
 2d_physics/layer_5="Spawns"
 2d_physics/layer_6="Bananas"
-2d_physics/layer_7="Damage_on_player"
 
 [rendering]
 
