@@ -5,6 +5,10 @@ export(float) var vel_coef = 0.8
 export(Vector2) var vel_dash = Vector2(80, 80)
 var vel_dash_temp := Vector2(20,20)
 var dashing := false
+var dash_collinding := false
+var how_many_dash_col = 0
+export(bool) var tombando = false
+export(float) var coef_tombando
 
 func _ready():
 	
@@ -37,7 +41,15 @@ func mover_livre():
 		vel_dash_temp = Global.wished_direction * vel_dash
 		
 	
-	move_and_slide(vel * Global.wished_direction * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing),Vector2.ZERO)
+	if dashing and dash_collinding:
+		tombou()
+		
+	
+	move_and_slide(vel * Global.wished_direction * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing) * (1 - coef_tombando * int(tombando) ),Vector2.ZERO)
+	
+
+func tombou():
+	$AnimationPlayer.play("tombando")
 	
 
 func animacao():
@@ -59,4 +71,20 @@ func animacao():
 				
 			
 		
+	
+
+
+func _on_Collision_Dash_body_entered(body):
+	how_many_dash_col += 1
+	dash_collinding = true
+	print(dash_collinding)
+
+
+func _on_Collision_Dash_body_exited(body):
+	
+	how_many_dash_col -= 1
+	
+	if how_many_dash_col <= 0:
+		dash_collinding = false
+		how_many_dash_col = 0
 	

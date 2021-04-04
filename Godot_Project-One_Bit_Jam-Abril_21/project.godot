@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Push That Button"
 run/main_scene="res://Scenes/Principal.tscn"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -49,6 +50,7 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
 [input]
 
 ptb_left={
@@ -85,7 +87,9 @@ ptb_down={
 2d_physics/layer_1="Camera"
 2d_physics/layer_2="Jogador"
 2d_physics/layer_3="Jogador_Dash"
+2d_physics/layer_4="Dash_Damage"
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
