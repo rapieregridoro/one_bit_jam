@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Fase/Chao.tscn" type="PackedScene" id=2]
@@ -7,6 +7,18 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 204.873 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 204.402 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 79.8973, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 79.7609, 10 )
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
@@ -30,5 +42,27 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="Camera_body"]
 current = true
 zoom = Vector2( 0.2, 0.2 )
+
+[node name="Limite_Cam" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Limite_Cam"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
+position = Vector2( -69.7944, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
+position = Vector2( 69.5686, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
+position = Vector2( 0, -196.278 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
+position = Vector2( 0, 197.406 )
+shape = SubResource( 5 )
 
 [editable path="Win_Altar"]

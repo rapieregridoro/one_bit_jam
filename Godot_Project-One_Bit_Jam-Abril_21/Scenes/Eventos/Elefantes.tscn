@@ -1,3 +1,11 @@
 [gd_scene format=2]
 
 [node name="Elefantes" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0, 0.133333, 0.992157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
