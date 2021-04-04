@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="Bola" type="Node2D"]
