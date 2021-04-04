@@ -8,7 +8,7 @@ func _ready():
 	$Chao.queue_free()
 	
 	#atualizando o global
-	set_camera_on_Jogador()
+	
 	connect("button_pressed_by_mouse",Global,"on_button_pressed_by_mouse")
 	
 	
@@ -29,7 +29,9 @@ func set_camera_on_Jogador():
 
 func reseta_fase():
 	
+	set_camera_on_Jogador()
 	get_tree().change_scene("res://Scenes/Fase/Fase.tscn")
+	Global.get_node("Win_Altar/Sprite").frame = 0
 	
 	pass
 

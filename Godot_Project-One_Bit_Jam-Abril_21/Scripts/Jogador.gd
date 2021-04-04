@@ -10,11 +10,12 @@ var how_many_dash_col = 0
 export(bool) var tombando = false
 export(float) var coef_tombando
 
-
+var morto := false
 
 func _ready():
 	Global.connect("morreu", self, "Morte")
 	Global.connect("interacting_signal",self,"interaction_emmited")
+	set_collision_layer_bit(6, true)
 	
 
 func _physics_process(delta):
@@ -40,14 +41,15 @@ func interaction_emmited():
 func mover_livre():
 	
 	if not dashing:
-		vel_dash_temp = Global.wished_direction * vel_dash
+		vel_dash_temp = Global.wished_direction.normalized() * vel_dash
 		
 	
 	if dashing and dash_collinding:
 		tombou()
 		
 	
-	move_and_slide(vel * Global.wished_direction * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing) * (1 - coef_tombando * int(tombando) ),Vector2.ZERO)
+	if !morto:
+		move_and_slide(vel * Global.wished_direction.normalized() * (1 - vel_coef * int(dashing) ) + vel_dash_temp * int(dashing) * (1 - coef_tombando * int(tombando) ),Vector2.ZERO)
 	
 
 func tombou():
@@ -55,32 +57,43 @@ func tombou():
 	
 
 func Morte(como):
-	print(como)
-	
+	morto = true
+	match como:
+		"banana":
+			$AnimationPlayer.play("escorregando")
+			
+		"fogo":
+			$AnimationPlayer.play("tostando")
+			
+		
+	yield(get_tree().create_timer(1.0), "timeout")
+	Global.emit_signal("reseta_tudo")
 
 func animacao():
 	
-	$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
-	if Global.wished_direction == Vector2.ZERO:
-		$AnimatedSprite.animation = "idle"
-	else:
-		$AnimatedSprite.animation = "walk"
-	
-	if dashing:
-		$AnimatedSprite.animation = "dash"
-		if !$AnimatedSprite/AnimationPlayer.is_playing():
-			match $AnimatedSprite.scale.x:
-				1.0:
-					$AnimatedSprite/AnimationPlayer.play("Dash_dir")
-				-1.0:
-					$AnimatedSprite/AnimationPlayer.play("Dash_esq")
+	if !morto:
+		$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
+		if Global.wished_direction == Vector2.ZERO:
+			$AnimatedSprite.animation = "idle"
+		else:
+			$AnimatedSprite.animation = "walk"
+		
+		if dashing:
+			$AnimatedSprite.animation = "dash"
+			if !$AnimatedSprite/AnimationPlayer.is_playing():
+				match $AnimatedSprite.scale.x:
+					1.0:
+						$AnimatedSprite/AnimationPlayer.play("Dash_dir")
+					-1.0:
+						$AnimatedSprite/AnimationPlayer.play("Dash_esq")
+					
 				
 			
+		if tombando:
+			$AnimatedSprite.animation = "knock_back"
+			$AnimatedSprite/AnimationPlayer.stop()
+			$AnimatedSprite.rotation = 0
 		
-	if tombando:
-		$AnimatedSprite.animation = "knock_back"
-		$AnimatedSprite/AnimationPlayer.stop()
-		$AnimatedSprite.rotation = 0
 	
 	
 
