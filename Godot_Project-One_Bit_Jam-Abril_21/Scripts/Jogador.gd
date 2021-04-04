@@ -60,8 +60,10 @@ func Morte(como):
 	match como:
 		"banana":
 			print("morreu pra banana")
-			pass
-		
+			
+		"fogo":
+			print("morreu queimado")
+			
 	
 
 func animacao():
