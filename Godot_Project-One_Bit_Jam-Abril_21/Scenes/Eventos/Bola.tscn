@@ -1,3 +1,11 @@
 [gd_scene format=2]
 
 [node name="Bola" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 1, 0.00784314, 0.00784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

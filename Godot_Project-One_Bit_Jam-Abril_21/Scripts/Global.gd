@@ -13,6 +13,8 @@ var vitoria := false
 var vitoria_playied := false
 signal reseta_tudo
 
+signal morreu(como)
+
 func _ready():
 	connect("reseta_tudo", self, "resetando_global")
 	pass 
@@ -23,6 +25,7 @@ func _process(delta):
 	
 	if vitoria:
 		vitoria()
+	
 	
 
 
@@ -39,7 +42,7 @@ func vitoria():
 	if !vitoria_playied:
 		$Win_Altar/AnimationPlayer.play("Victory")
 		vitoria_playied = true
-	
+	$Limite_Cam/StaticBody2D.set_collision_layer_bit(0, false)
 	$Camera_body.vel_camera = 2
 	$Camera_body.alvo = $Win_Camera_Pos.get_path()
 	
@@ -51,6 +54,8 @@ func vitoria():
 func resetando_global():
 	vitoria = false
 	vitoria_playied = false
+	$Win_Altar/Sprite.frame = 0
+	$Limite_Cam/StaticBody2D.set_collision_layer_bit(0,true)
 	
 
 func on_button_pressed_by_mouse():

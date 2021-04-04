@@ -10,8 +10,10 @@ var how_many_dash_col = 0
 export(bool) var tombando = false
 export(float) var coef_tombando
 
+
+
 func _ready():
-	
+	Global.connect("morreu", self, "Morte")
 	Global.connect("interacting_signal",self,"interaction_emmited")
 	
 
@@ -52,6 +54,10 @@ func tombou():
 	$AnimationPlayer.play("tombando")
 	
 
+func Morte(como):
+	print(como)
+	
+
 func animacao():
 	
 	$AnimatedSprite.scale.x = Global.wished_direction.x if Global.wished_direction.x != 0 else $AnimatedSprite.scale.x
@@ -82,7 +88,6 @@ func animacao():
 func _on_Collision_Dash_body_entered(body):
 	how_many_dash_col += 1
 	dash_collinding = true
-	
 	
 
 
