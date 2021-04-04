@@ -21,6 +21,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collision_Dash/Dash_Damage/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -39,7 +51,7 @@ atlas = ExtResource( 3 )
 region = Rect2( 36, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=7]
@@ -59,7 +71,7 @@ atlas = ExtResource( 2 )
 region = Rect2( 36, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 12, 8 )
 
 [sub_resource type="SpriteFrames" id=12]
@@ -71,7 +83,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "dash",
+"name": "knock_back",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
@@ -81,7 +93,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 11 ) ],
 "loop": true,
-"name": "knock_back",
+"name": "dash",
 "speed": 5.0
 } ]
 
@@ -115,7 +127,7 @@ tracks/0/keys = {
 radius = 4.0
 
 [sub_resource type="RayShape2D" id=16]
-length = 7.0
+length = 6.0
 
 [sub_resource type="CircleShape2D" id=17]
 radius = 3.0
@@ -169,7 +181,7 @@ rotation = -1.5708
 shape = SubResource( 16 )
 
 [node name="Dash_Damage" type="Area2D" parent="Collision_Dash"]
-position = Vector2( 5, 0 )
+position = Vector2( 6, 0 )
 collision_layer = 8
 collision_mask = 0
 
