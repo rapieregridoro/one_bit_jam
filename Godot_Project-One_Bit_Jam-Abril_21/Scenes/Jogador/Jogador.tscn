@@ -28,10 +28,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false, true ]
 }
 
 [sub_resource type="AtlasTexture" id=2]
@@ -51,24 +51,24 @@ atlas = ExtResource( 3 )
 region = Rect2( 36, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 12, 8 )
+region = Rect2( 12, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 12, 0, 12, 8 )
+region = Rect2( 24, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 24, 0, 12, 8 )
+region = Rect2( 36, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 36, 0, 12, 8 )
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 12, 8 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
@@ -81,15 +81,15 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
-"name": "knock_back",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "walk",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "knock_back",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 11 ) ],
 "loop": true,

@@ -27,7 +27,7 @@ func _physics_process(delta):
 
 func interaction_emmited():
 	#chamado quando sinal de interação é emitido
-	if Global.wished_direction != Vector2.ZERO and !dashing:
+	if Global.wished_direction != Vector2.ZERO and !dashing and !tombando:
 		dashing = true
 		yield(get_tree().create_timer(0.5), "timeout")
 		dashing = false
