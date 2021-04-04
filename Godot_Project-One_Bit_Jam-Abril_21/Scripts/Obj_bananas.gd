@@ -9,7 +9,7 @@ func _ready():
 	
 
 
-func _process(delta):
+func _process(_delta):
 	if !ja_caiu:
 		yield(get_tree().create_timer(delay), "timeout")
 		$AnimationPlayer.play("Cai_a_banana")

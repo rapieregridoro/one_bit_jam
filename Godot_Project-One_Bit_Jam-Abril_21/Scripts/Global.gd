@@ -13,6 +13,8 @@ var vitoria := false
 var vitoria_playied := false
 signal reseta_tudo
 
+signal morreu(como)
+
 func _ready():
 	connect("reseta_tudo", self, "resetando_global")
 	pass 
@@ -23,6 +25,7 @@ func _process(delta):
 	
 	if vitoria:
 		vitoria()
+	
 	
 
 
