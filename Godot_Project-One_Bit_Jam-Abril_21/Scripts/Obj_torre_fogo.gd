@@ -8,7 +8,7 @@ func _ready():
 
 
 func _process(delta):
-	
+	$ColorRect.color.a = int(!$Particles2D/Area2D/CollisionPolygon2D.disabled)
 	pass
 
 

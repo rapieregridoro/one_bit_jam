@@ -6,6 +6,7 @@ var interacting := false
 signal interacting_signal
 signal aperte
 signal botao_apertado
+signal corte_samurai
 
 var on_menu = true setget set_on_menu
 func set_on_menu(menu):
