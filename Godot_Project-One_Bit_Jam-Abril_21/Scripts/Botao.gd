@@ -6,7 +6,9 @@ func _ready():
 	pass 
 
 func _process(delta):
-	
+	if Global.on_menu and Input.is_action_just_pressed("Dash"):
+		Global.on_button_pressed_by_mouse()
+		pass
 	pass
 
 func anim_press():
