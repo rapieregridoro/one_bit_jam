@@ -93,6 +93,7 @@ func Morte(como):
 		
 	yield(get_tree().create_timer(1.0), "timeout")
 	Global.emit_signal("reseta_tudo")
+	Global.score = 0
 
 func animacao():
 	

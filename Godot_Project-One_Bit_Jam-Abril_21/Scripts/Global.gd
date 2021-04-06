@@ -7,6 +7,7 @@ signal interacting_signal
 signal aperte
 signal botao_apertado
 signal corte_samurai
+var score : int = 0
 
 var on_menu = true setget set_on_menu
 func set_on_menu(menu):
@@ -27,6 +28,8 @@ func _ready():
 	
 
 func _process(delta):
+	
+	$CanvasGlobal/Score_Painel/Score_Label.text = String(score)
 	
 	wished_direction_inputs()
 	
@@ -49,6 +52,8 @@ func vitoria():
 	if !vitoria_playied:
 		$Win_Altar/AnimationPlayer.play("Victory")
 		vitoria_playied = true
+		score += 1
+	
 	$Limite_Cam/StaticBody2D.set_collision_layer_bit(0, false)
 	$Camera_body.vel_camera = 2
 	$Camera_body.alvo = $Win_Camera_Pos.get_path()
@@ -56,6 +61,7 @@ func vitoria():
 	if !$Win_Altar/AnimationPlayer.is_playing():
 		yield(get_tree().create_timer(1.5), "timeout")
 		emit_signal("reseta_tudo")
+		
 	
 
 func resetando_global():

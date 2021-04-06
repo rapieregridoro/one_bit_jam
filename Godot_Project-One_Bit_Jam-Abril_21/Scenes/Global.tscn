@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Fase/Chao.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Images/Controles.png" type="Texture" id=5]
 [ext_resource path="res://Images/creditos.png" type="Texture" id=6]
 [ext_resource path="res://Images/titulo.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/BAUHS93.TTF" type="DynamicFontData" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
@@ -69,6 +70,10 @@ extents = Vector2( 79.8973, 10 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 79.7609, 10 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 8 )
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
@@ -137,5 +142,27 @@ shape = SubResource( 6 )
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
 position = Vector2( 0, 197.406 )
 shape = SubResource( 7 )
+
+[node name="CanvasGlobal" type="CanvasLayer" parent="."]
+
+[node name="Score_Painel" type="HBoxContainer" parent="CanvasGlobal"]
+margin_left = 837.214
+margin_top = 28.2843
+margin_right = 997.214
+margin_bottom = 68.2843
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasGlobal/Score_Painel"]
+margin_bottom = 40.0
+
+[node name="Score_Label" type="Label" parent="CanvasGlobal/Score_Painel"]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 94.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 8 )
+text = "12345"
 
 [editable path="Win_Altar"]
