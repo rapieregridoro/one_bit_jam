@@ -6,58 +6,58 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 624, 0, 104, 137 )
+region = Rect2( 0, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 728, 0, 104, 137 )
+region = Rect2( 104, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 832, 0, 104, 137 )
+region = Rect2( 208, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 936, 0, 104, 137 )
+region = Rect2( 312, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 1040, 0, 104, 137 )
+region = Rect2( 416, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 104, 137 )
+region = Rect2( 520, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 104, 0, 104, 137 )
+region = Rect2( 624, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 208, 0, 104, 137 )
+region = Rect2( 728, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 312, 0, 104, 137 )
+region = Rect2( 832, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 416, 0, 104, 137 )
+region = Rect2( 936, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 520, 0, 104, 137 )
+region = Rect2( 1040, 0, 104, 137 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "Corte",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), null ],
 "loop": true,
 "name": "Sacando",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "Corte",
 "speed": 5.0
 } ]
 
@@ -82,10 +82,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.5, 2.6, 2.7, 2.8, 2.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.5, 2.6, 2.7, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 1, 2, 3, 2, 3, 4, 5, 0, 1, 2, 3, 4 ]
+"values": [ 0, 0, 1, 2, 3, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath(".:position:x")
