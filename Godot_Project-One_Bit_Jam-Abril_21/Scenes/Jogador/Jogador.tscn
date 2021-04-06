@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Images/Carinha_walk.png" type="Texture" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://Images/Carinha_dash.png" type="Texture" id=4]
 [ext_resource path="res://Images/Carinha_knockback.png" type="Texture" id=5]
 [ext_resource path="res://Images/Carinha_tostado.png" type="Texture" id=6]
+[ext_resource path="res://Images/Carinha_fatiado_baixo.png" type="Texture" id=8]
+[ext_resource path="res://Images/Carinha_fatiado_cima.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=1]
 resource_name = "escorregando"
 length = 0.5
 tracks/0/type = "bezier"
@@ -53,7 +55,99 @@ tracks/3/keys = {
 "values": [ "dash" ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=2]
+resource_name = "fatiado"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite/Cima:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -1, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite/Cima:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -0.5, -0.169122, 0.382046, 0.169122, -0.382046, -2, -0.413482, -0.0123556, 0.413482, 0.0123556 ),
+"times": PoolRealArray( 0, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("AnimatedSprite/Baixo:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.2 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("AnimatedSprite/Baixo:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 4, -0.0692788, 0.0102274, 0.0692788, -0.0102274, 5, -0.625394, -0.0683031, 0.625394, 0.0683031 ),
+"times": PoolRealArray( 0, 1.2 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite/Cima:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimatedSprite:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "invisivel" ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("AnimatedSprite/Baixo:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:tombando")
@@ -92,8 +186,7 @@ tracks/2/keys = {
 "values": [ 18, 82 ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "tostando"
+[sub_resource type="Animation" id=4]
 length = 0.9
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("AnimatedSprite:scale:x")
@@ -159,80 +252,105 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0, 1 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimatedSprite:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_right = 1
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
 region = Rect2( 14, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 28, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
 region = Rect2( 42, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 14, 10 )
-
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
 region = Rect2( 14, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 2 )
 region = Rect2( 28, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 12, 9 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 6 )
 region = Rect2( 12, 0, 12, 9 )
 
-[sub_resource type="SpriteFrames" id=26]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 19 ) ],
+"frames": [ SubResource( 11 ) ],
 "loop": true,
 "name": "knock_back",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 20 ) ],
+"frames": [  ],
 "loop": true,
-"name": "dash",
+"name": "invisivel",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 22 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ) ],
 "loop": true,
 "name": "walk",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 15 ) ],
+"loop": true,
+"name": "dash",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": false,
 "name": "tostado",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=19]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -257,7 +375,7 @@ tracks/1/keys = {
 "values": [ 18, 82 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=20]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -282,16 +400,16 @@ tracks/1/keys = {
 "values": [ 18, 82 ]
 }
 
-[sub_resource type="CircleShape2D" id=29]
+[sub_resource type="CircleShape2D" id=21]
 radius = 4.0
 
-[sub_resource type="RayShape2D" id=30]
+[sub_resource type="RayShape2D" id=22]
 length = 6.0
 
-[sub_resource type="CircleShape2D" id=31]
+[sub_resource type="CircleShape2D" id=23]
 radius = 3.0
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=24]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D:disabled")
@@ -307,31 +425,59 @@ tracks/0/keys = {
 }
 
 [node name="Jogador" type="KinematicBody2D"]
-collision_layer = 82
+collision_layer = 18
 collision_mask = 82
 script = ExtResource( 1 )
 vel_coef = 0.6
 coef_tombando = 1.7
+delay_dash = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/escorregando = SubResource( 12 )
-anims/tombando = SubResource( 13 )
-anims/tostando = SubResource( 14 )
+anims/escorregando = SubResource( 1 )
+anims/fatiado = SubResource( 2 )
+anims/tombando = SubResource( 3 )
+anims/tostando = SubResource( 4 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -7.0
+margin_top = 1.0
+margin_right = 7.0
+margin_bottom = 2.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -4 )
-frames = SubResource( 26 )
-animation = "tostado"
-frame = 1
-playing = true
+frames = SubResource( 18 )
+animation = "invisivel"
+
+[node name="Cima" type="Sprite" parent="AnimatedSprite"]
+visible = false
+position = Vector2( -4, -2 )
+texture = ExtResource( 9 )
+
+[node name="Baixo" type="Sprite" parent="AnimatedSprite"]
+visible = false
+position = Vector2( 3, 5 )
+texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
-anims/Dash_dir = SubResource( 27 )
-anims/Dash_esq = SubResource( 28 )
+anims/Dash_dir = SubResource( 19 )
+anims/Dash_esq = SubResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -3 )
-shape = SubResource( 29 )
+shape = SubResource( 21 )
 
 [node name="Collision_Dash" type="Area2D" parent="."]
 position = Vector2( 0, -3 )
@@ -340,7 +486,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Dash"]
 rotation = -1.5708
-shape = SubResource( 30 )
+shape = SubResource( 22 )
 
 [node name="Dash_Damage" type="Area2D" parent="Collision_Dash"]
 position = Vector2( 6, 0 )
@@ -348,10 +494,10 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Dash/Dash_Damage"]
-shape = SubResource( 31 )
+shape = SubResource( 23 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Collision_Dash/Dash_Damage"]
-anims/Damage = SubResource( 32 )
+anims/Damage = SubResource( 24 )
 [connection signal="body_entered" from="Collision_Dash" to="." method="_on_Collision_Dash_body_entered"]
 [connection signal="body_exited" from="Collision_Dash" to="." method="_on_Collision_Dash_body_exited"]

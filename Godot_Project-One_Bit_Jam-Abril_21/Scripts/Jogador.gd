@@ -9,16 +9,27 @@ var dash_collinding := false
 var how_many_dash_col = 0
 export(bool) var tombando = false
 export(float) var coef_tombando
+var timer_dash : float = 0
+export(float) var delay_dash = 0.5
 
 var morto := false
+var omae_wa_mou := false
 
 func _ready():
+	$AnimatedSprite.playing = true
+	$AnimatedSprite/Cima.visible = false
+	$AnimatedSprite/Baixo.visible = false
 	Global.connect("morreu", self, "Morte")
 	Global.connect("interacting_signal",self,"interaction_emmited")
+	Global.connect("corte_samurai",self,"check_dash")
 	set_collision_layer_bit(6, true)
 	
 
 func _physics_process(delta):
+	timer_dash += delta
+	
+	$ProgressBar.visible = timer_dash < delay_dash
+	$ProgressBar.value = timer_dash/delay_dash
 	
 	if !Global.on_menu:
 		mover_livre()
@@ -28,12 +39,21 @@ func _physics_process(delta):
 	
 	
 
+func check_dash():
+	
+	if !dashing:
+		omae_wa_mou = true
+		yield(get_tree().create_timer(0.5), "timeout")
+		Global.emit_signal("morreu","shindeiru")
+	
+
 
 func interaction_emmited():
 	#chamado quando sinal de interação é emitido
-	if Global.wished_direction != Vector2.ZERO and !dashing and !tombando:
+	if Global.wished_direction != Vector2.ZERO and !dashing and !tombando and timer_dash > delay_dash:
 		dashing = true
 		yield(get_tree().create_timer(0.5), "timeout")
+		timer_dash = 0
 		dashing = false
 		yield(get_tree().create_timer(0.2), "timeout")
 		
@@ -66,6 +86,10 @@ func Morte(como):
 		"fogo":
 			$AnimationPlayer.play("tostando")
 			
+		"shindeiru":
+			$AnimatedSprite.playing = false
+			yield(get_tree().create_timer(1.0), "timeout")
+			$AnimationPlayer.play("fatiado")
 		
 	yield(get_tree().create_timer(1.0), "timeout")
 	Global.emit_signal("reseta_tudo")

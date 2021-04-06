@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Carinha_fatiado.png-f38acd9030b0fdb1fce92efef0bb8997.stex"
+path="res://.import/Corte.png-bf21824a7d54d3ed9c89af9de01af65d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Carinha_fatiado.png"
-dest_files=[ "res://.import/Carinha_fatiado.png-f38acd9030b0fdb1fce92efef0bb8997.stex" ]
+source_file="res://Images/Corte.png"
+dest_files=[ "res://.import/Corte.png-bf21824a7d54d3ed9c89af9de01af65d.stex" ]
 
 [params]
 

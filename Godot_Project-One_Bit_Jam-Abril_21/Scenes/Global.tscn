@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Zoom_in"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:zoom:x")
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Zoom_out"
 length = 2.0
 tracks/0/type = "bezier"
@@ -58,16 +58,16 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6, 2 )
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 204.873 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 204.402 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 79.8973, 10 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 79.7609, 10 )
 
 [node name="Global" type="Node"]
@@ -113,8 +113,8 @@ zoom = Vector2( 0.15, 0.15 )
 
 [node name="AnimationCamera" type="AnimationPlayer" parent="Camera_body/Camera2D"]
 autoplay = "Zoom_out"
-anims/Zoom_in = SubResource( 6 )
-anims/Zoom_out = SubResource( 7 )
+anims/Zoom_in = SubResource( 2 )
+anims/Zoom_out = SubResource( 3 )
 
 [node name="Limite_Cam" type="Node2D" parent="."]
 
@@ -124,18 +124,18 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
 position = Vector2( -69.7944, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
 position = Vector2( 69.5686, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
 position = Vector2( 0, -196.278 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Limite_Cam/StaticBody2D"]
 position = Vector2( 0, 197.406 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [editable path="Win_Altar"]
