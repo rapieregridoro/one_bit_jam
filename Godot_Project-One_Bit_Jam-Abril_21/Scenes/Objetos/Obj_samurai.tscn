@@ -1,48 +1,68 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Images/Samurai.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Obj_samurai.gd" type="Script" id=2]
+[ext_resource path="res://Images/Corte.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 624, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 85, 50 )
+region = Rect2( 728, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 85, 0, 85, 50 )
+region = Rect2( 832, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 170, 0, 85, 50 )
+region = Rect2( 936, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 255, 0, 85, 50 )
+region = Rect2( 1040, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 340, 0, 85, 50 )
+region = Rect2( 0, 0, 104, 137 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 425, 0, 85, 50 )
+region = Rect2( 104, 0, 104, 137 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 208, 0, 104, 137 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 312, 0, 104, 137 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 416, 0, 104, 137 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 520, 0, 104, 137 )
+
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [  ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "Corte",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "Sacando",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Samurai"
-length = 3.0
+[sub_resource type="Animation" id=13]
+length = 3.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -50,7 +70,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.1, 2.2 ),
+"times": PoolRealArray( 0, 2.1, 2.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ "Sacando", "Sacando", "Corte" ]
@@ -62,10 +82,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.5, 2.6, 2.7, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 1, 2, 3, 2, 3, 4, 5, 0 ]
+"values": [ 0, 0, 1, 2, 3, 2, 3, 4, 5, 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath(".:position:x")
@@ -75,7 +95,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "points": PoolRealArray( 905, -0.25, 0, 0.25, 0, 840, -0.25, 0, 0.25, 0, 840, -0.25, 0, 0.25, 0, 215, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2.1, 2.2 )
+"times": PoolRealArray( 0, 1, 2.1, 2.4 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath(".:position:y")
@@ -84,8 +104,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 229.479, -0.25, 0, 0.25, 0, 233.872, -0.246501, 6.35709, 0.246501, -6.35709, 239.479, -0.225549, -5.9938, 0.225549, 5.9938, 239.479, -0.225549, -5.9938, 0.225549, 5.9938, 425, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 2.1, 2.2 )
+"points": PoolRealArray( 229.479, -0.25, 0, 0.25, 0, 233.872, -0.246501, 6.35709, 0.246501, -6.35709, 239.479, -0.225549, -5.9938, 0.225549, 5.9938, 239.479, -0.225549, -5.9938, 0.225549, 5.9938, 300, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 2.1, 2.4 )
 }
 tracks/4/type = "bezier"
 tracks/4/path = NodePath(".:modulate:a")
@@ -94,32 +114,46 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.483174, -0.158167, -0.515395, 0.158167, 0.515395, 0.483174, -0.179048, 0, 0.179048, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3, 0.7, 1 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.483174, -0.158167, -0.515395, 0.158167, 0.515395, 0.483174, -0.179048, 0, 0.179048, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.7, 1, 3, 3.6 )
 }
-tracks/5/type = "bezier"
-tracks/5/path = NodePath("../ColorRect:color:a")
+tracks/5/type = "method"
+tracks/5/path = NodePath("../..")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2, 2.1, 2.2, 2.3 )
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("../..")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 2.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "Corte"
 } ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Corte:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2.1, 2.15, 2.2, 2.25, 2.3, 2.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Corte:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [node name="Obj_samurai" type="Node2D"]
@@ -131,17 +165,17 @@ script = ExtResource( 2 )
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 905, 229.479 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 8 )
+frames = SubResource( 12 )
 animation = "Sacando"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/AnimatedSprite"]
 autoplay = "Samurai"
-anims/Samurai = SubResource( 1 )
+anims/Samurai = SubResource( 13 )
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 1, 1, 1, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Corte" type="Sprite" parent="CanvasLayer"]
+visible = false
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 6
+frame = 5

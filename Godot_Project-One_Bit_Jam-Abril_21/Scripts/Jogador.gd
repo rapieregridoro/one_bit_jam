@@ -16,6 +16,9 @@ var morto := false
 var omae_wa_mou := false
 
 func _ready():
+	$AnimatedSprite.playing = true
+	$AnimatedSprite/Cima.visible = false
+	$AnimatedSprite/Baixo.visible = false
 	Global.connect("morreu", self, "Morte")
 	Global.connect("interacting_signal",self,"interaction_emmited")
 	Global.connect("corte_samurai",self,"check_dash")
@@ -84,9 +87,9 @@ func Morte(como):
 			$AnimationPlayer.play("tostando")
 			
 		"shindeiru":
-			
+			$AnimatedSprite.playing = false
 			yield(get_tree().create_timer(1.0), "timeout")
-			
+			$AnimationPlayer.play("fatiado")
 		
 	yield(get_tree().create_timer(1.0), "timeout")
 	Global.emit_signal("reseta_tudo")
