@@ -5,8 +5,8 @@
 [node name="Torre_fogo" type="Node2D"]
 
 [node name="Obj_torre_fogo2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -70, 30 )
+position = Vector2( -70, 0.1549 )
 scale = Vector2( -1, 1 )
 
 [node name="Obj_torre_fogo" parent="." instance=ExtResource( 1 )]
-position = Vector2( 70, 30 )
+position = Vector2( 70, 0.1549 )
